@@ -7,10 +7,10 @@ pub fn clz(self : MyInt64) -> Int {
 }
 
 pub fn ctz(self : MyInt64) -> Int {
-  if self.lo == 0 {
-    32 + self.lo.ctz()
+  if self.lo != 0 {
+    self.lo.ctz()
   } else {
-    self.hi.ctz()
+    32 + self.hi.ctz()
   }
 }
 

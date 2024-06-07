@@ -43,13 +43,15 @@ test "from_int64 to_int64" {
 fn int64_to_string(x : Int64, alphabet : String) -> String {
   let base = alphabet.length().to_int64()
   let res = Buffer::make(0)
+  let mut is_empty = true
   let mut x = x
   while x != 0L {
     let r = x % base
     res.write_char(alphabet[r.to_int()])
+    is_empty = false
     x = x / base
   }
-  if res.length() == 0 {
+  if is_empty {
     "0"
   } else {
     res.to_string()
